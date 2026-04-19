@@ -1,0 +1,12 @@
+django
+djangorestframework
+djangorestframework-simplejwt
+psycopg2-binary
+anthropic
+python-dotenv
+django-cors-headers
+pdfplumber
+pypdf
+python-docx
+beautifulsoup4
+requests
