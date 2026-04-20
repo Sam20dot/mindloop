@@ -146,3 +146,24 @@ CORS_ALLOW_CREDENTIALS = True
 FRONTEND_URL = os.environ.get('FRONTEND_URL', 'https://mindloop-psi.vercel.app')
 
 ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+    'loggers': {
+        'apps': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}

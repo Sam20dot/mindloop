@@ -1,3 +1,4 @@
+import logging
 from datetime import timedelta
 
 from django.utils import timezone
@@ -9,14 +10,18 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from .serializers import RegisterSerializer, UserSerializer
 
+logger = logging.getLogger(__name__)
+
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register(request):
+    logger.info('[REGISTER] received data keys: %s', list(request.data.keys()))
     serializer = RegisterSerializer(data=request.data)
     if serializer.is_valid():
         user = serializer.save()
         refresh = RefreshToken.for_user(user)
+        logger.info('[REGISTER] success for %s', user.email)
         return Response({
             'user': UserSerializer(user).data,
             'access': str(refresh.access_token),
@@ -24,6 +29,7 @@ def register(request):
         }, status=status.HTTP_201_CREATED)
     # Flatten the first validation error into a readable `error` key
     errors = serializer.errors
+    logger.warning('[REGISTER] validation errors: %s', errors)
     first_field = next(iter(errors))
     first_msg = errors[first_field][0] if errors[first_field] else 'Validation failed.'
     readable = f"{first_field}: {first_msg}" if first_field != 'non_field_errors' else str(first_msg)
