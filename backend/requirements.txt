@@ -10,3 +10,6 @@ pypdf
 python-docx
 beautifulsoup4
 requests
+gunicorn
+whitenoise
+dj-database-url
