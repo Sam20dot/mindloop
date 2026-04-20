@@ -22,7 +22,12 @@ def register(request):
             'access': str(refresh.access_token),
             'refresh': str(refresh),
         }, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # Flatten the first validation error into a readable `error` key
+    errors = serializer.errors
+    first_field = next(iter(errors))
+    first_msg = errors[first_field][0] if errors[first_field] else 'Validation failed.'
+    readable = f"{first_field}: {first_msg}" if first_field != 'non_field_errors' else str(first_msg)
+    return Response({'error': readable, 'errors': errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
