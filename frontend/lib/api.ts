@@ -1,8 +1,8 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 async function apiFetch(path: string, options: RequestInit = {}) {
   const { headers: extraHeaders, ...restOptions } = options;
-  const res = await fetch(`${API_URL}${path}`, {
+  const res = await fetch(`${BASE_URL}/api/v1${path}`, {
     ...restOptions,
     headers: {
       'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ export async function extractTextFromFile(token: string, file: File): Promise<{ 
   const form = new FormData();
   form.append('file', file);
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'}/sessions/extract-text`,
+    `${BASE_URL}/api/v1/sessions/extract-text`,
     { method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: form },
   );
   const data = await res.json();
@@ -297,7 +297,7 @@ export async function getMaterial(token: string, id: string) {
 }
 
 export async function deleteMaterial(token: string, id: string) {
-  return fetch(`${API_URL}/library/${id}/delete`, {
+  return fetch(`${BASE_URL}/api/v1/library/${id}/delete`, {
     method: 'DELETE',
     headers: { Authorization: `Bearer ${token}` },
   });
@@ -307,7 +307,7 @@ export async function uploadMaterialFile(token: string, file: File, title?: stri
   const form = new FormData();
   form.append('file', file);
   if (title) form.append('title', title);
-  const res = await fetch(`${API_URL}/library/upload`, {
+  const res = await fetch(`${BASE_URL}/api/v1/library/upload`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
     body: form,

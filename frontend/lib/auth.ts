@@ -2,11 +2,11 @@ import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { loginUser } from './api';
 
-const BACKEND = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+const BACKEND = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 async function refreshAccessToken(token: Record<string, unknown>) {
   try {
-    const res = await fetch(`${BACKEND}/auth/token/refresh`, {
+    const res = await fetch(`${BACKEND}/api/v1/auth/token/refresh`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ refresh: token.refreshToken }),
