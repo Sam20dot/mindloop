@@ -27,7 +27,45 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Global form element overrides — always visible regardless of OS dark mode */
+/* ── Dark mode overrides for Tailwind utility classes ─────────────────────────
+   .dark .bg-white has higher specificity (2 classes) than .bg-white (1 class)
+   so these win without !important and without touching any component file.     */
+
+/* Backgrounds */
+.dark .bg-white          { background-color: #1e293b; }
+.dark .bg-gray-50        { background-color: #0f172a; }
+.dark .bg-gray-100       { background-color: #1e293b; }
+.dark .bg-gray-200       { background-color: #334155; }
+.dark .bg-indigo-50      { background-color: #1e1b4b; }
+.dark .bg-indigo-100     { background-color: #312e81; }
+.dark .bg-red-50         { background-color: #3b0000; }
+.dark .bg-green-50       { background-color: #052e16; }
+.dark .bg-yellow-50      { background-color: #422006; }
+.dark .bg-blue-50        { background-color: #0c1a2e; }
+
+/* Borders */
+.dark .border-gray-100   { border-color: #334155; }
+.dark .border-gray-200   { border-color: #334155; }
+.dark .border-gray-300   { border-color: #475569; }
+.dark .border-indigo-200 { border-color: #3730a3; }
+
+/* Text */
+.dark .text-gray-900     { color: #f8fafc; }
+.dark .text-gray-800     { color: #e2e8f0; }
+.dark .text-gray-700     { color: #cbd5e1; }
+.dark .text-gray-600     { color: #94a3b8; }
+.dark .text-gray-500     { color: #64748b; }
+.dark .text-gray-400     { color: #475569; }
+.dark .text-indigo-700   { color: #818cf8; }
+.dark .text-indigo-600   { color: #818cf8; }
+.dark .text-red-700      { color: #fca5a5; }
+.dark .text-green-700    { color: #86efac; }
+
+/* Navbar + sticky header */
+.dark header.bg-white,
+.dark header             { background-color: #1e293b; border-color: #334155; }
+
+/* Global form element overrides */
 input,
 textarea,
 select {
