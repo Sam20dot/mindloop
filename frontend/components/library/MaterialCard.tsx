@@ -47,13 +47,13 @@ export function MaterialCard({ material, onStartSession, onDelete, deleting }: P
 
       <div className="flex gap-2">
         <button
-          onClick={() => onStartSession(material)}
+          onClick={e => { e.stopPropagation(); onStartSession(material); }}
           className="flex-1 bg-indigo-600 text-white text-xs font-semibold py-2 rounded-lg hover:bg-indigo-700 transition-colors"
         >
           📚 Start Session
         </button>
         <button
-          onClick={() => onDelete(material.id)}
+          onClick={e => { e.stopPropagation(); onDelete(material.id); }}
           disabled={deleting}
           className="px-3 py-2 text-xs text-red-500 border border-red-200 rounded-lg hover:bg-red-50 transition-colors disabled:opacity-40"
         >
