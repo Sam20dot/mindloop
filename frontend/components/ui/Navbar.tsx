@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { useState } from 'react';
+import DarkModeToggle from './DarkModeToggle';
 
 const NAV_LINKS = [
   { href: '/dashboard',       label: 'Dashboard',      icon: '🏠' },
@@ -67,8 +68,9 @@ export default function Navbar() {
             )}
           </nav>
 
-          {/* Right: points + avatar + mobile menu */}
+          {/* Right: points + avatar + dark mode + mobile menu */}
           <div className="flex items-center gap-3">
+            <DarkModeToggle />
             <span className="hidden sm:flex items-center gap-1 bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-1 rounded-full">
               ⭐ {points.toLocaleString()} pts
             </span>

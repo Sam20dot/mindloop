@@ -97,26 +97,26 @@ function LearnPageInner() {
             <form onSubmit={handleStart} className="bg-white border border-gray-200 rounded-xl p-6 space-y-5 shadow-sm">
               {/* Topic */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Topic</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Topic</label>
                 <input
                   type="text"
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
                   placeholder="e.g. Python for Data Science"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white bg-white dark:bg-gray-800 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   required
                 />
               </div>
 
               {/* Study Material */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Study Material</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Study Material</label>
                 <textarea
                   value={material}
                   onChange={(e) => setMaterial(e.target.value)}
                   placeholder="Paste or type your study material here. The more detail you provide, the better the questions will be."
                   rows={8}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white bg-white dark:bg-gray-800 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
                   required
                 />
 

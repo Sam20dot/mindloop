@@ -13,6 +13,9 @@ interface Props {
   onClose: () => void;
 }
 
+const inputCls = "w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-900 dark:text-white bg-white dark:bg-gray-800 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-400";
+const labelCls = "block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1";
+
 export function UploadModal({ token, onUploaded, onClose }: Props) {
   const [tab, setTab] = useState<UploadTab>('file');
   const [loading, setLoading] = useState(false);
@@ -52,19 +55,21 @@ export function UploadModal({ token, onUploaded, onClose }: Props) {
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl w-full max-w-md shadow-xl">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 className="font-bold text-gray-900">Add Material</h2>
+      <div className="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-md shadow-xl">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-700">
+          <h2 className="font-bold text-gray-900 dark:text-white">Add Material</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl">×</button>
         </div>
 
         <div className="px-6 pt-4 pb-2">
           {/* Tabs */}
-          <div className="flex gap-1 bg-gray-100 p-1 rounded-xl mb-4">
+          <div className="flex gap-1 bg-gray-100 dark:bg-gray-800 p-1 rounded-xl mb-4">
             {(['file', 'url', 'youtube'] as UploadTab[]).map(t => (
               <button key={t} onClick={() => setTab(t)}
                 className={`flex-1 py-1.5 text-sm font-medium rounded-lg transition-colors capitalize ${
-                  tab === t ? 'bg-white text-indigo-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                  tab === t
+                    ? 'bg-white dark:bg-gray-700 text-indigo-600 dark:text-indigo-400 shadow-sm'
+                    : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
                 }`}>
                 {t === 'file' ? '📎 File' : t === 'url' ? '🌐 URL' : '▶️ YouTube'}
               </button>
@@ -73,29 +78,29 @@ export function UploadModal({ token, onUploaded, onClose }: Props) {
 
           <div className="space-y-3">
             <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">Title (optional)</label>
+              <label className={labelCls}>Title (optional)</label>
               <input value={title} onChange={e => setTitle(e.target.value)}
                 placeholder="e.g. Chapter 3 Notes"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+                className={inputCls} />
             </div>
 
             {tab === 'file' && (
               <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">Upload file</label>
+                <label className={labelCls}>Upload file</label>
                 <input ref={fileRef} type="file" accept=".pdf,.docx,.txt"
-                  className="w-full text-sm text-gray-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-indigo-50 file:text-indigo-700 file:text-sm file:font-medium" />
+                  className="w-full text-sm text-gray-600 dark:text-gray-300 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-indigo-50 file:text-indigo-700 file:text-sm file:font-medium" />
                 <p className="text-xs text-gray-400 mt-1">Supported: .pdf, .docx, .txt</p>
               </div>
             )}
 
             {(tab === 'url' || tab === 'youtube') && (
               <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">
+                <label className={labelCls}>
                   {tab === 'youtube' ? 'YouTube URL' : 'Web page URL'}
                 </label>
                 <input type="url" value={url} onChange={e => setUrl(e.target.value)}
                   placeholder={tab === 'youtube' ? 'https://youtube.com/watch?v=...' : 'https://example.com/article'}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+                  className={inputCls} />
               </div>
             )}
 

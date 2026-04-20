@@ -68,7 +68,7 @@ export function QuestionCard({ question, token, onAnswered }: QuestionCardProps)
             onChange={(e) => setResponse(e.target.value)}
             placeholder="Type your answer here..."
             rows={3}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+            className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white bg-white dark:bg-gray-800 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
             disabled={loading}
           />
           {error && <p className="text-red-600 text-sm">{error}</p>}

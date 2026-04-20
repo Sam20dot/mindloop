@@ -97,7 +97,7 @@ export default function CareerPage() {
               value={skillInput}
               onChange={(e) => setSkillInput(e.target.value)}
               placeholder="e.g. Python, Machine Learning, SQL..."
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2.5 text-sm text-gray-900 dark:text-white bg-white dark:bg-gray-800 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               disabled={generating}
             />
             <button
