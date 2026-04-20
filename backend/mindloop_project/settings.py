@@ -134,6 +134,7 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOWED_ORIGINS = [
+    "https://mindloop-psi.vercel.app",
     "https://mindloop.vercel.app",
     "http://localhost:3000",
 ]
@@ -141,5 +142,7 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
+
+FRONTEND_URL = os.environ.get('FRONTEND_URL', 'https://mindloop-psi.vercel.app')
 
 ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
