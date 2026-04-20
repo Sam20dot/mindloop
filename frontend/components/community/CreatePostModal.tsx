@@ -54,7 +54,7 @@ export default function CreatePostModal({ onClose, onCreated }: Props) {
             <select
               value={type}
               onChange={e => setType(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               {POST_TYPES.map(t => (
                 <option key={t.value} value={t.value}>{t.label}</option>
@@ -70,7 +70,7 @@ export default function CreatePostModal({ onClose, onCreated }: Props) {
               placeholder="Share your progress, achievement, or insight..."
               rows={4}
               maxLength={500}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
             />
             <div className="text-right text-xs text-gray-400 mt-1">{content.length}/500</div>
           </div>
