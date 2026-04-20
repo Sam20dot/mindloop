@@ -154,7 +154,7 @@ export default function LibraryPage() {
               <div key={m.id} onClick={() => handleView(m)} className="cursor-pointer">
                 <MaterialCard
                   material={m}
-                  onStartSession={e => { e.stopPropagation?.(); handleStartSession(m); }}
+                  onStartSession={() => { handleStartSession(m); }}
                   onDelete={id => { handleDelete(id); }}
                   deleting={deletingId === m.id}
                 />
